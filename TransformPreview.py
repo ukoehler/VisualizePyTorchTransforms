@@ -14,13 +14,13 @@ class TransformPreview:
         self.samples = samples
         self.transform = None
 
-    def update(self, parent, originalImage, transform):
+    def update(self, parent, originalImage, inputImage, transform):
         parent.clear()
         with parent:
             ui.label("Original image")
             ui.interactive_image(pilImageToBase64(originalImage))
             with ui.row():
                 for i in range(self.samples):
-                    img = transform(originalImage)
+                    img = transform(inputImage)
                     ui.interactive_image(pilImageToBase64(img))
 
